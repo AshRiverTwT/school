@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: school-web
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/AshRiverTwT/school.git
+    targetRevision: main
+    path: school-web
+    helm:
+      valueFiles:
+        - values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: school
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
