@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/AshRiverTwT/school.git
     targetRevision: main
-    path: school-web
+    path: .
     helm:
       valueFiles:
         - values.yaml
